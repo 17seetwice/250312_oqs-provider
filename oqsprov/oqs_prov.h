@@ -978,6 +978,42 @@ extern const OSSL_DISPATCH
 extern const OSSL_DISPATCH
     oqs_SubjectPublicKeyInfo_der_to_p521_hqc256_decoder_functions[];
 
+/*smaug_t*/
+extern const OSSL_DISPATCH oqs_smaugt1_to_PrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt1_to_PrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_smaugt1_to_EncryptedPrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_smaugt1_to_EncryptedPrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_smaugt1_to_SubjectPublicKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_smaugt1_to_SubjectPublicKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt1_to_text_encoder_functions[];
+extern const OSSL_DISPATCH oqs_PrivateKeyInfo_der_to_smaugt1_decoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_SubjectPublicKeyInfo_der_to_smaugt1_decoder_functions[];
+
+extern const OSSL_DISPATCH oqs_smaugt3_to_PrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt3_to_PrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt3_to_EncryptedPrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt3_to_EncryptedPrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt3_to_SubjectPublicKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt3_to_SubjectPublicKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt3_to_text_encoder_functions[];
+extern const OSSL_DISPATCH oqs_PrivateKeyInfo_der_to_smaugt3_decoder_functions[];
+extern const OSSL_DISPATCH oqs_SubjectPublicKeyInfo_der_to_smaugt3_decoder_functions[];
+
+extern const OSSL_DISPATCH oqs_smaugt5_to_PrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt5_to_PrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt5_to_EncryptedPrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt5_to_EncryptedPrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt5_to_SubjectPublicKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt5_to_SubjectPublicKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_smaugt5_to_text_encoder_functions[];
+extern const OSSL_DISPATCH oqs_PrivateKeyInfo_der_to_smaugt5_decoder_functions[];
+extern const OSSL_DISPATCH oqs_SubjectPublicKeyInfo_der_to_smaugt5_decoder_functions[];
+
 #endif /* OQS_KEM_ENCODERS */
 
 extern const OSSL_DISPATCH
@@ -1881,6 +1917,46 @@ extern const OSSL_DISPATCH
     oqs_PrivateKeyInfo_der_to_CROSSrsdp128balanced_decoder_functions[];
 extern const OSSL_DISPATCH
     oqs_SubjectPublicKeyInfo_der_to_CROSSrsdp128balanced_decoder_functions[];
+
+/*haetae*/
+extern const OSSL_DISPATCH
+    oqs_haetae120_to_PrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae120_to_PrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae120_to_EncryptedPrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae120_to_EncryptedPrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae120_to_SubjectPublicKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_haetae120_to_SubjectPublicKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae120_to_text_encoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_PrivateKeyInfo_der_to_haetae120_decoder_functions[];
+extern const OSSL_DISPATCH
+    oqs_SubjectPublicKeyInfo_der_to_haetae120_decoder_functions[];
+
+extern const OSSL_DISPATCH oqs_haetae180_to_PrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae180_to_PrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae180_to_EncryptedPrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae180_to_EncryptedPrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae180_to_SubjectPublicKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae180_to_SubjectPublicKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae180_to_text_encoder_functions[];
+extern const OSSL_DISPATCH oqs_PrivateKeyInfo_der_to_haetae180_decoder_functions[];
+extern const OSSL_DISPATCH oqs_SubjectPublicKeyInfo_der_to_haetae180_decoder_functions[];
+
+extern const OSSL_DISPATCH oqs_haetae260_to_PrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae260_to_PrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae260_to_EncryptedPrivateKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae260_to_EncryptedPrivateKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae260_to_SubjectPublicKeyInfo_der_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae260_to_SubjectPublicKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_haetae260_to_text_encoder_functions[];
+extern const OSSL_DISPATCH oqs_PrivateKeyInfo_der_to_haetae260_decoder_functions[];
+extern const OSSL_DISPATCH oqs_SubjectPublicKeyInfo_der_to_haetae260_decoder_functions[];
+
 ///// OQS_TEMPLATE_FRAGMENT_ENDECODER_FUNCTIONS_END
 
 ///// OQS_TEMPLATE_FRAGMENT_ALG_FUNCTIONS_START
@@ -1937,6 +2013,12 @@ extern const OSSL_DISPATCH oqs_p384_mayo3_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_mayo5_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_p521_mayo5_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_CROSSrsdp128balanced_keymgmt_functions[];
+
+/*haetae*/
+extern const OSSL_DISPATCH oqs_haetae120_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_haetae180_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_haetae260_keymgmt_functions[];
+
 
 extern const OSSL_DISPATCH oqs_frodo640aes_keymgmt_functions[];
 
@@ -1996,6 +2078,13 @@ extern const OSSL_DISPATCH oqs_ecx_x448_hqc192_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_hqc256_keymgmt_functions[];
 
 extern const OSSL_DISPATCH oqs_ecp_p521_hqc256_keymgmt_functions[];
+
+/*smaug_t*/
+extern const OSSL_DISPATCH oqs_smaugt1_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_smaugt3_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_smaugt5_keymgmt_functions[];
+
+
 ///// OQS_TEMPLATE_FRAGMENT_ALG_FUNCTIONS_END
 
 /* BIO function declarations */

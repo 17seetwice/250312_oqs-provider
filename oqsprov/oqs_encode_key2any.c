@@ -1111,6 +1111,18 @@ static int oqsx_pki_priv_to_der(const void *vxkey, unsigned char **pder) {
 #define p521_hqc256_input_type "p521_hqc256"
 #define p521_hqc256_pem_type "p521_hqc256"
 
+#define smaugt1_evp_type 0
+#define smaugt1_input_type "smaugt1"
+#define smaugt1_pem_type "smaugt1"
+
+#define smaugt3_evp_type 0
+#define smaugt3_input_type "smaugt3"
+#define smaugt3_pem_type "smaugt3"
+
+#define smaugt5_evp_type 0
+#define smaugt5_input_type "smaugt5"
+#define smaugt5_pem_type "smaugt5"
+
 #define mldsa44_evp_type 0
 #define mldsa44_input_type "mldsa44"
 #define mldsa44_pem_type "mldsa44"
@@ -1259,6 +1271,17 @@ static int oqsx_pki_priv_to_der(const void *vxkey, unsigned char **pder) {
 #define p521_mayo5_evp_type 0
 #define p521_mayo5_input_type "p521_mayo5"
 #define p521_mayo5_pem_type "p521_mayo5"
+
+#define haetae120_evp_type 0
+#define haetae120_input_type "haetae120"
+#define haetae120_pem_type "haetae120"
+#define haetae180_evp_type 0
+#define haetae180_input_type "haetae180"
+#define haetae180_pem_type "haetae180"
+#define haetae260_evp_type 0
+#define haetae260_input_type "haetae260"
+#define haetae260_pem_type "haetae260"
+
 #define CROSSrsdp128balanced_evp_type 0
 #define CROSSrsdp128balanced_input_type "CROSSrsdp128balanced"
 #define CROSSrsdp128balanced_pem_type "CROSSrsdp128balanced"
@@ -2224,6 +2247,31 @@ MAKE_ENCODER(_ecp, p521_hqc256, oqsx, PrivateKeyInfo, pem);
 MAKE_ENCODER(_ecp, p521_hqc256, oqsx, SubjectPublicKeyInfo, der);
 MAKE_ENCODER(_ecp, p521_hqc256, oqsx, SubjectPublicKeyInfo, pem);
 MAKE_TEXT_ENCODER(_ecp, p521_hqc256);
+
+MAKE_ENCODER(, smaugt1, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, smaugt1, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, smaugt1, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, smaugt1, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, smaugt1, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, smaugt1, oqsx, SubjectPublicKeyInfo, pem);
+MAKE_TEXT_ENCODER(, smaugt1);
+
+MAKE_ENCODER(, smaugt3, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, smaugt3, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, smaugt3, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, smaugt3, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, smaugt3, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, smaugt3, oqsx, SubjectPublicKeyInfo, pem);
+MAKE_TEXT_ENCODER(, smaugt3);
+
+MAKE_ENCODER(, smaugt5, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, smaugt5, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, smaugt5, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, smaugt5, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, smaugt5, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, smaugt5, oqsx, SubjectPublicKeyInfo, pem);
+MAKE_TEXT_ENCODER(, smaugt5);
+
 #endif /* OQS_KEM_ENCODERS */
 
 MAKE_ENCODER(, mldsa44, oqsx, EncryptedPrivateKeyInfo, der);
@@ -2581,5 +2629,30 @@ MAKE_ENCODER(, CROSSrsdp128balanced, oqsx, PrivateKeyInfo, der);
 MAKE_ENCODER(, CROSSrsdp128balanced, oqsx, PrivateKeyInfo, pem);
 MAKE_ENCODER(, CROSSrsdp128balanced, oqsx, SubjectPublicKeyInfo, der);
 MAKE_ENCODER(, CROSSrsdp128balanced, oqsx, SubjectPublicKeyInfo, pem);
+
+MAKE_TEXT_ENCODER(, haetae120);
+MAKE_ENCODER(, haetae120, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, haetae120, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae120, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, haetae120, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae120, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, haetae120, oqsx, SubjectPublicKeyInfo, pem);
+
+MAKE_TEXT_ENCODER(, haetae180);
+MAKE_ENCODER(, haetae180, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, haetae180, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae180, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, haetae180, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae180, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, haetae180, oqsx, SubjectPublicKeyInfo, pem);
+
+MAKE_TEXT_ENCODER(, haetae260);
+MAKE_ENCODER(, haetae260, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, haetae260, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae260, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, haetae260, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, haetae260, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, haetae260, oqsx, SubjectPublicKeyInfo, pem);
+
 MAKE_TEXT_ENCODER(, CROSSrsdp128balanced);
 ///// OQS_TEMPLATE_FRAGMENT_ENCODER_MAKE_END

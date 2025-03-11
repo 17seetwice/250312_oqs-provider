@@ -54,11 +54,11 @@ extern OSSL_FUNC_provider_get_capabilities_fn oqs_provider_get_capabilities;
  * List of all algorithms with given OIDs
  */
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_START
-
+//기존 186->3개 추가됨, 기존 100개에서 3개 추가됨
 #ifdef OQS_KEM_ENCODERS
-#define OQS_OID_CNT 186
+#define OQS_OID_CNT 192
 #else
-#define OQS_OID_CNT 100
+#define OQS_OID_CNT 106
 #endif
 const char *oqs_oid_alg_list[OQS_OID_CNT] = {
 
@@ -149,6 +149,12 @@ const char *oqs_oid_alg_list[OQS_OID_CNT] = {
     "hqc256",
     NULL,
     "p521_hqc256",
+    NULL,
+    "smaugt1",
+    NULL,
+    "smaugt3",
+    NULL,
+    "smaugt5",
 
 #endif /* OQS_KEM_ENCODERS */
 
@@ -252,6 +258,12 @@ const char *oqs_oid_alg_list[OQS_OID_CNT] = {
     "p521_mayo5",
     "1.3.6.1.4.1.62245.2.1.1",
     "CROSSrsdp128balanced",
+    "1.3.9999.9.5.2",
+    "haetae120",
+    "1.3.9999.9.5.3",
+    "haetae180",
+    "1.3.9999.9.5.4",
+    "haetae260",
     ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_END
 };
 
@@ -364,7 +376,14 @@ int oqs_patch_oids(void) {
         if ((envval = getenv("OQS_OID_P521_HQC256")))
             oqs_oid_alg_list[84] = envval;
 
-#define OQS_KEMOID_CNT 84 + 2
+        if ((envval = getenv("OQS_OID_SMAUGT1")))
+            oqs_oid_alg_list[86] = envval;
+        if ((envval = getenv("OQS_OID_SMAUGT3")))
+            oqs_oid_alg_list[88] = envval;         
+        if ((envval = getenv("OQS_OID_SMAUGT5")))
+            oqs_oid_alg_list[90] = envval; 
+// 기존 84 + 2에서 3*2개 추가됨
+#define OQS_KEMOID_CNT 84+2+6
 #else
 #define OQS_KEMOID_CNT 0
 #endif /* OQS_KEM_ENCODERS */
@@ -468,6 +487,12 @@ int oqs_patch_oids(void) {
             oqs_oid_alg_list[96 + OQS_KEMOID_CNT] = envval;
         if ((envval = getenv("OQS_OID_CROSSRSDP128BALANCED")))
             oqs_oid_alg_list[98 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_HAETAE120")))
+            oqs_oid_alg_list[100 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_HAETAE180")))
+            oqs_oid_alg_list[102 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_HAETAE260")))
+            oqs_oid_alg_list[104 + OQS_KEMOID_CNT] = envval;
     } ///// OQS_TEMPLATE_FRAGMENT_OID_PATCHING_END
     return 1;
 }
@@ -595,6 +620,15 @@ static const OSSL_ALGORITHM oqsprovider_signatures[] = {
 #ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
     SIGALG("CROSSrsdp128balanced", 128, oqs_signature_functions),
 #endif
+#ifdef OQS_ENABLE_SIG_haetae_120
+    SIGALG("haetae120", 120, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_haetae_180
+    SIGALG("haetae180", 180, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_haetae_260
+    SIGALG("haetae260", 260, oqs_signature_functions),
+#endif
     ///// OQS_TEMPLATE_FRAGMENT_SIG_FUNCTIONS_END
     {NULL, NULL, NULL}};
 
@@ -674,6 +708,15 @@ static const OSSL_ALGORITHM oqsprovider_asym_kems[] = {
 #ifdef OQS_ENABLE_KEM_hqc_256
     KEMBASEALG(hqc256, 256)
     KEMHYBALG(p521_hqc256, 256)
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_t_1
+    KEMBASEALG(smaugt1, 128)
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_t_3
+    KEMBASEALG(smaugt3, 192)
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_t_5
+    KEMBASEALG(smaugt5, 256)
 #endif
     // clang-format on
     ///// OQS_TEMPLATE_FRAGMENT_KEM_FUNCTIONS_END
@@ -767,6 +810,15 @@ static const OSSL_ALGORITHM oqsprovider_keymgmt[] =
 #ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
     SIGALG("CROSSrsdp128balanced", 128, oqs_CROSSrsdp128balanced_keymgmt_functions),
 #endif
+#ifdef OQS_ENABLE_SIG_haetae_120
+    SIGALG("haetae120", 120, oqs_haetae120_keymgmt_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_haetae_180
+    SIGALG("haetae180", 180, oqs_haetae180_keymgmt_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_haetae_260
+    SIGALG("haetae260", 260, oqs_haetae260_keymgmt_functions),
+#endif
 
 #ifdef OQS_ENABLE_KEM_frodokem_640_aes
     KEMKMALG(frodo640aes, 128)
@@ -855,6 +907,15 @@ static const OSSL_ALGORITHM oqsprovider_keymgmt[] =
     KEMKMALG(hqc256, 256)
 
     KEMKMHYBALG(p521_hqc256, 256, ecp)
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_t_1
+    KEMKMALG(smaugt1, 128)
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_t_3
+    KEMKMALG(smaugt3, 192)
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_t_5
+    KEMKMALG(smaugt5, 256)
 #endif
         // clang-format on
         ///// OQS_TEMPLATE_FRAGMENT_KEYMGMT_FUNCTIONS_END

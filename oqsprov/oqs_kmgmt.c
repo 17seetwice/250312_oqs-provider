@@ -1175,6 +1175,7 @@ static void *p521_mayo5_gen_init(void *provctx, int selection) {
                          KEY_TYPE_HYB_SIG, 256, 48, 0);
 }
 
+
 static void *CROSSrsdp128balanced_new_key(void *provctx) {
     return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx),
                         OQS_SIG_alg_cross_rsdp_128_balanced,
@@ -1187,7 +1188,38 @@ static void *CROSSrsdp128balanced_gen_init(void *provctx, int selection) {
                          "CROSSrsdp128balanced", 0, 128, 49, 0);
 }
 
-///// OQS_TEMPLATE_FRAGMENT_KEYMGMT_CONSTRUCTORS_END
+/*haetae*/
+static void *haetae120_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_haetae_120,
+                        "haetae120", KEY_TYPE_SIG, NULL, 120, 50, 0);
+}
+
+static void *haetae120_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_haetae_120, "haetae120", 0,
+                         120, 50, 0);
+}
+
+static void *haetae180_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_haetae_180,
+                        "haetae180", KEY_TYPE_SIG, NULL, 180, 51, 0);
+}
+
+static void *haetae180_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_haetae_180, "haetae180", 0,
+                         180, 51, 0);
+}
+
+static void *haetae260_new_key(void *provctx) {
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_haetae_260,
+                        "haetae260", KEY_TYPE_SIG, NULL, 260, 52, 0);
+}
+
+static void *haetae260_gen_init(void *provctx, int selection) {
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_haetae_260, "haetae260", 0,
+                         260, 52, 0);
+}
+
+/// OQS_TEMPLATE_FRAGMENT_KEYMGMT_CONSTRUCTORS_END
 
 #define MAKE_SIG_KEYMGMT_FUNCTIONS(alg)                                        \
                                                                                \
@@ -1380,6 +1412,9 @@ MAKE_SIG_KEYMGMT_FUNCTIONS(mayo3)
 MAKE_SIG_KEYMGMT_FUNCTIONS(p384_mayo3)
 MAKE_SIG_KEYMGMT_FUNCTIONS(mayo5)
 MAKE_SIG_KEYMGMT_FUNCTIONS(p521_mayo5)
+MAKE_SIG_KEYMGMT_FUNCTIONS(haetae120)
+MAKE_SIG_KEYMGMT_FUNCTIONS(haetae180)
+MAKE_SIG_KEYMGMT_FUNCTIONS(haetae260)
 MAKE_SIG_KEYMGMT_FUNCTIONS(CROSSrsdp128balanced)
 
 MAKE_KEM_KEYMGMT_FUNCTIONS(frodo640aes, OQS_KEM_alg_frodokem_640_aes, 128)
@@ -1461,4 +1496,10 @@ MAKE_KEM_ECX_KEYMGMT_FUNCTIONS(x448_hqc192, OQS_KEM_alg_hqc_192, 192, 0)
 MAKE_KEM_KEYMGMT_FUNCTIONS(hqc256, OQS_KEM_alg_hqc_256, 256)
 
 MAKE_KEM_ECP_KEYMGMT_FUNCTIONS(p521_hqc256, OQS_KEM_alg_hqc_256, 256)
+
+MAKE_KEM_KEYMGMT_FUNCTIONS(smaugt1, OQS_KEM_alg_smaug_t_1, 128)
+MAKE_KEM_KEYMGMT_FUNCTIONS(smaugt3, OQS_KEM_alg_smaug_t_3, 192)
+MAKE_KEM_KEYMGMT_FUNCTIONS(smaugt5, OQS_KEM_alg_smaug_t_5, 256)
+
+
 ///// OQS_TEMPLATE_FRAGMENT_KEYMGMT_FUNCTIONS_END

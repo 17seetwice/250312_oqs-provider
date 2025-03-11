@@ -140,6 +140,21 @@ DECODER_w_structure("p521_hqc256", der, PrivateKeyInfo, p521_hqc256),
 DECODER_w_structure("p521_hqc256", der, SubjectPublicKeyInfo, p521_hqc256),
 #endif
 
+#ifdef OQS_ENABLE_KEM_smaug_t_1
+DECODER_w_structure("smaugt1", der, PrivateKeyInfo, smaugt1),
+DECODER_w_structure("smaugt1", der, SubjectPublicKeyInfo, smaugt1),
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_t_3
+DECODER_w_structure("smaugt3", der, PrivateKeyInfo, smaugt3),
+DECODER_w_structure("smaugt3", der, SubjectPublicKeyInfo, smaugt3),
+#endif
+
+#ifdef OQS_ENABLE_KEM_smaug_t_5
+DECODER_w_structure("smaugt5", der, PrivateKeyInfo, smaugt5),
+DECODER_w_structure("smaugt5", der, SubjectPublicKeyInfo, smaugt5),
+#endif
+
 #endif /* OQS_KEM_ENCODERS */
 
 
@@ -240,5 +255,20 @@ DECODER_w_structure("p521_mayo5", der, SubjectPublicKeyInfo, p521_mayo5),
 #ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
 DECODER_w_structure("CROSSrsdp128balanced", der, PrivateKeyInfo, CROSSrsdp128balanced),
 DECODER_w_structure("CROSSrsdp128balanced", der, SubjectPublicKeyInfo, CROSSrsdp128balanced),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_120
+DECODER_w_structure("haetae120", der, PrivateKeyInfo, haetae120),
+DECODER_w_structure("haetae120", der, SubjectPublicKeyInfo, haetae120),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_180
+DECODER_w_structure("haetae180", der, PrivateKeyInfo, haetae180),
+DECODER_w_structure("haetae180", der, SubjectPublicKeyInfo, haetae180),
+#endif
+
+#ifdef OQS_ENABLE_SIG_haetae_260
+DECODER_w_structure("haetae260", der, PrivateKeyInfo, haetae260),
+DECODER_w_structure("haetae260", der, SubjectPublicKeyInfo, haetae260),
 #endif
 ///// OQS_TEMPLATE_FRAGMENT_MAKE_END

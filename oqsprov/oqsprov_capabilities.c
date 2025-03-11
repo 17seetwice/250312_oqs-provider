@@ -98,6 +98,11 @@ static OQS_GROUP_CONSTANTS oqs_group_list[] = {
     {0x0246, 256, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1},
 
     {0x2F46, 256, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1},
+    /////밑에는 내가 추가 KEM
+    {0x2F56, 128, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1}, //smaug_t1
+    {0x2F57, 192, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1}, //smaug_t3
+    {0x2F58, 256, TLS1_3_VERSION, 0, DTLS1_3_VERSION, 0, 1}, //smaug_t5
+
     ///// OQS_TEMPLATE_FRAGMENT_GROUP_ASSIGNMENTS_END
 };
 
@@ -227,6 +232,17 @@ static const OSSL_PARAM oqs_param_group_list[][11] = {
 
     OQS_GROUP_ENTRY(p521_hqc256, p521_hqc256, p521_hqc256, 42),
 #endif
+
+/*smaug_t*/
+#ifdef OQS_ENABLE_KEM_smaug_t_1
+    OQS_GROUP_ENTRY(smaugt1, smaugt1, smaugt1, 43),
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_t_3
+    OQS_GROUP_ENTRY(smaugt3, smaugt3, smaugt3, 44),
+#endif
+#ifdef OQS_ENABLE_KEM_smaug_t_5
+    OQS_GROUP_ENTRY(smaugt5, smaugt5, smaugt5, 45),
+#endif
     ///// OQS_TEMPLATE_FRAGMENT_GROUP_NAMES_END
 };
 
@@ -265,7 +281,9 @@ static OQS_SIGALG_CONSTANTS oqs_sigalg_list[] = {
     {0xfef3, 128, TLS1_3_VERSION, 0}, {0xfef0, 192, TLS1_3_VERSION, 0},
     {0xfef4, 192, TLS1_3_VERSION, 0}, {0xfef1, 256, TLS1_3_VERSION, 0},
     {0xfef5, 256, TLS1_3_VERSION, 0}, {0xfef6, 128, TLS1_3_VERSION, 0},
-    ///// OQS_TEMPLATE_FRAGMENT_SIGALG_ASSIGNMENTS_END
+    {0xfee1, 256, TLS1_3_VERSION, 0}, {0xfee3, 256, TLS1_3_VERSION, 0}, 
+    {0xfee4, 256, TLS1_3_VERSION, 0}, 
+    ///// OQS_TEMPLATE_FRAGMENT_SIGALG_ASSIGNMENTS_END 0xfee1, 0xfee3, 0xfee4는 내가임의로 추가 (haetae 120,haetae180, haetae260)
 };
 
 int oqs_patch_codepoints() {
@@ -524,6 +542,16 @@ int oqs_patch_codepoints() {
     if (getenv("OQS_CODEPOINT_CROSSRSDP128BALANCED"))
         oqs_sigalg_list[49].code_point =
             atoi(getenv("OQS_CODEPOINT_CROSSRSDP128BALANCED"));
+    /*haetae*/
+    if (getenv("OQS_CODEPOINT_HAETAE120"))
+        oqs_sigalg_list[50].code_point =
+            atoi(getenv("OQS_CODEPOINT_HAETAE120"));
+    if (getenv("OQS_CODEPOINT_HAETAE180"))
+        oqs_sigalg_list[51].code_point =
+            atoi(getenv("OQS_CODEPOINT_HAETAE180"));
+    if (getenv("OQS_CODEPOINT_HAETAE260"))
+        oqs_sigalg_list[52].code_point =
+            atoi(getenv("OQS_CODEPOINT_HAETAE260"));    
     ///// OQS_TEMPLATE_FRAGMENT_CODEPOINT_PATCHING_END
     return 1;
 }
@@ -687,6 +715,16 @@ static const OSSL_PARAM oqs_param_sigalg_list[][12] = {
 #ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
     OQS_SIGALG_ENTRY(CROSSrsdp128balanced, CROSSrsdp128balanced,
                      CROSSrsdp128balanced, "1.3.6.1.4.1.62245.2.1.1", 49),
+#endif
+/*haetae*/
+#ifdef OQS_ENABLE_SIG_haetae_120
+    OQS_SIGALG_ENTRY(haetae120, haetae120, haetae120, "1.3.9999.9.5.2", 50),
+#endif
+#ifdef OQS_ENABLE_SIG_haetae_180
+    OQS_SIGALG_ENTRY(haetae180, haetae180, haetae180, "1.3.9999.9.5.3", 51),
+#endif
+#ifdef OQS_ENABLE_SIG_haetae_260
+    OQS_SIGALG_ENTRY(haetae260, haetae260, haetae260, "1.3.9999.9.5.4", 52),
 #endif
     ///// OQS_TEMPLATE_FRAGMENT_SIGALG_NAMES_END
 };
